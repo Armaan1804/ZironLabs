@@ -1,0 +1,44 @@
+{
+  "status": "FLAGGED_FOR_HUMAN_REVIEW",
+  "summary": "Flagged: 1 error, 1 warning. [ERROR] RATE_MISMATCH: 2200.00 + 350.00 = 2550.00, but total_pay is 2800.00 (difference 250.00). [WARNING] OVERWEIGHT_LOAD: Weight 46,800 lbs exceeds the 45,000 lb limit by 1,800 lbs.",
+  "data": {
+    "carrier_name": "Apex Logistics Solutions LLC",
+    "load_number": "LD-994821",
+    "pickup_location": {
+      "facility_name": "Distribution Center 4",
+      "city": "Dallas",
+      "state": "TX",
+      "zip_code": "75201"
+    },
+    "delivery_location": {
+      "facility_name": "Warehouse B",
+      "city": "Atlanta",
+      "state": "GA",
+      "zip_code": "30303"
+    },
+    "total_linehaul_rate": 2200.0,
+    "fuel_surcharge": 350.0,
+    "total_pay": 2800.0,
+    "weight_lbs": 46800
+  },
+  "issues": [
+    {
+      "code": "RATE_MISMATCH",
+      "severity": "ERROR",
+      "message": "2200.00 + 350.00 = 2550.00, but total_pay is 2800.00 (difference 250.00).",
+      "fields": [
+        "total_linehaul_rate",
+        "fuel_surcharge",
+        "total_pay"
+      ]
+    },
+    {
+      "code": "OVERWEIGHT_LOAD",
+      "severity": "WARNING",
+      "message": "Weight 46,800 lbs exceeds the 45,000 lb limit by 1,800 lbs.",
+      "fields": [
+        "weight_lbs"
+      ]
+    }
+  ]
+}

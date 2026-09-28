@@ -1,0 +1,15 @@
+# ── Core ─────────────────────────────────────────────────────────────────────
+pydantic>=2.7,<3.0
+instructor[groq]>=1.7.0           # Structured LLM output + schema-enforcement retries
+                                  # [groq] extra installs groq automatically
+groq>=0.13.0                      # Official Groq Python SDK
+python-dotenv>=1.0.0              # .env file loading
+pdfplumber>=0.11.0                # PDF text extraction
+fastapi>=0.100.0                  # Backend API
+uvicorn[standard]>=0.23.0         # ASGI server
+python-multipart>=0.0.6           # Form/File parsing
+
+# ── Testing ───────────────────────────────────────────────────────────────────
+pytest>=8.0.0
+pytest-mock>=3.14.0         # mocker fixture for patching LLM calls
+fpdf2>=2.7.0                # Lightweight PDF generator used in test_ingest.py

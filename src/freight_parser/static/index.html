@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freight Parser</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-cube"></i>
+                <span>FreightParser</span>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-tab="parser">
+                    <i class="fa-solid fa-file-invoice"></i> Parser
+                </button>
+                <button class="nav-btn" data-tab="docs">
+                    <i class="fa-solid fa-book"></i> Documentation
+                </button>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <!-- TAB: Parser -->
+            <section id="tab-parser" class="tab-content active">
+                <header class="page-header">
+                    <h2>Document Parser</h2>
+                    <p>Extract structured data and validate rules automatically.</p>
+                </header>
+
+                <div class="upload-area" id="drop-zone">
+                    <input type="file" id="file-input" accept=".pdf,.txt,.md" hidden>
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    <div class="upload-text">
+                        <span class="upload-title">Click to upload</span> or drag and drop
+                    </div>
+                    <div class="upload-hint">PDF or TXT files only</div>
+                </div>
+
+                <div id="parsing-state" class="parsing-state" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Processing document via LLM...</span>
+                </div>
+
+                <div id="results-section" class="results-section" style="display: none;">
+                    <div class="result-header">
+                        <div class="result-title">
+                            <h3>Extraction Results</h3>
+                            <span id="status-badge" class="badge">APPROVED</span>
+                        </div>
+                        <p id="result-summary" class="summary-text"></p>
+                    </div>
+
+                    <div id="issues-container" class="issues-box" style="display: none;">
+                        <h4>Issues Found</h4>
+                        <ul id="issues-list"></ul>
+                    </div>
+
+                    <div class="data-table">
+                        <div class="table-row">
+                            <div class="table-col">
+                                <label>Carrier Name</label>
+                                <span id="val-carrier">-</span>
+                            </div>
+                            <div class="table-col">
+                                <label>Load Number</label>
+                                <span id="val-load">-</span>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-col">
+                                <label>Pickup Location</label>
+                                <span id="val-pickup">-</span>
+                            </div>
+                            <div class="table-col">
+                                <label>Delivery Location</label>
+                                <span id="val-delivery">-</span>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-col">
+                                <label>Linehaul</label>
+                                <span id="val-linehaul">-</span>
+                            </div>
+                            <div class="table-col">
+                                <label>Fuel Surcharge</label>
+                                <span id="val- fuel">-</span>
+                            </div>
+                            <div class="table-col">
+                                <label>Total Pay</label>
+                                <span id="val-total" class="highlight">-</span>
+                            </div>
+                            <div class="table-col">
+                                <label>Weight</label>
+                                <span id="val-weight">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="reset-btn" class="btn-secondary">Parse Another File</button>
+                </div>
+            </section>
+
+            <!-- TAB: Documentation -->
+            <section id="tab-docs" class="tab-content" style="display: none;">
+                <header class="page-header">
+                    <h2>Documentation</h2>
+                    <p>Instructions, setup, and architectural details.</p>
+                </header>
+                <div class="markdown-body" id="readme-content">
+                    <div class="spinner small"></div> Loading documentation...
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
